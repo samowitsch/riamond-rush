@@ -1,0 +1,174 @@
+{"frames": [
+
+{
+	"filename": "btn-about.png",
+	"frame": {"x":294,"y":740,"w":135,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":135,"h":60},
+	"sourceSize": {"w":135,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-back.png",
+	"frame": {"x":431,"y":740,"w":135,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":135,"h":60},
+	"sourceSize": {"w":135,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-facebook.png",
+	"frame": {"x":568,"y":740,"w":135,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":135,"h":60},
+	"sourceSize": {"w":135,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-ingame-back.png",
+	"frame": {"x":826,"y":364,"w":50,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+	"sourceSize": {"w":50,"h":50},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-ingame-digg.png",
+	"frame": {"x":826,"y":416,"w":50,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+	"sourceSize": {"w":50,"h":50},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-ingame-menu.png",
+	"frame": {"x":826,"y":468,"w":50,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+	"sourceSize": {"w":50,"h":50},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-ingame-restart.png",
+	"frame": {"x":878,"y":364,"w":50,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+	"sourceSize": {"w":50,"h":50},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-level-easy.png",
+	"frame": {"x":294,"y":553,"w":185,"h":360},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":185,"h":360},
+	"sourceSize": {"w":185,"h":360},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-level-hard.png",
+	"frame": {"x":656,"y":553,"w":185,"h":360},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":185,"h":360},
+	"sourceSize": {"w":185,"h":360},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-level-medium.png",
+	"frame": {"x":822,"y":2,"w":185,"h":360},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":185,"h":360},
+	"sourceSize": {"w":185,"h":360},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-level-select-locked.png",
+	"frame": {"x":668,"y":402,"w":102,"h":77},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":102,"h":77},
+	"sourceSize": {"w":102,"h":77},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-level-select.png",
+	"frame": {"x":747,"y":402,"w":102,"h":77},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":102,"h":77},
+	"sourceSize": {"w":102,"h":77},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-play.png",
+	"frame": {"x":705,"y":740,"w":135,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":135,"h":60},
+	"sourceSize": {"w":135,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "btn-twitter.png",
+	"frame": {"x":842,"y":740,"w":135,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":135,"h":60},
+	"sourceSize": {"w":135,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "title-riamond-player.png",
+	"frame": {"x":171,"y":2,"w":495,"h":549},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":495,"h":549},
+	"sourceSize": {"w":495,"h":549},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "title-text-riamond.png",
+	"frame": {"x":2,"y":2,"w":800,"h":167},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":167},
+	"sourceSize": {"w":800,"h":167},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "title-text-rush.png",
+	"frame": {"x":668,"y":2,"w":398,"h":152},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":398,"h":152},
+	"sourceSize": {"w":398,"h":152},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "well-done.png",
+	"frame": {"x":171,"y":553,"w":200,"h":121},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":121},
+	"sourceSize": {"w":200,"h":121},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "gfx-ui.png",
+	"format": "RGBA5555",
+	"size": {"w":1018,"h":804},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e59f4b4f8d84d2b7a60bef80f25b76bd:85c90b42578b5a9928cd68a4200e9696:ba2a1fca113fd2cbe76a1b0b578236f0$"
+}
+}

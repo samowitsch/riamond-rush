@@ -1,0 +1,4 @@
+
+GameCallbacks.prototype.onBannerHidden = function () {
+}
+

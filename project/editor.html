@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="viewport" content="initial-scale=1.0;maximum-scale=1.0;user-scalable=no;width=device-width">
+
+    <title>Riamond Rush - Level Editor</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/editor.css" media="screen"/>
+    <link href="//cdn.rawgit.com/noelboss/featherlight/master/release/featherlight.min.css" type="text/css" rel="stylesheet" title="Featherlight Styles" />
+
+
+    <script src="js/game/levels.js"></script>
+    <script src="js/game/themes.js"></script>
+    <script src="js/editors/levels/main.js"></script>
+
+    <script src="//code.jquery.com/jquery-latest.js"></script>
+    <script src="//cdn.rawgit.com/noelboss/featherlight/master/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+</head>
+
+<body>
+<h2><img src="gfx/player-small.png" /> <a href="index.html" target="_blank" title="Start Raimond Rush game.">Riamond Rush</a> Level Editor [to <a href="particleeditor.html" target="_blank" title="Particle Editor.">Particle Editor</a>]</h2>
+<table cellspacing="10">
+    <tr>
+        <td valign="top">
+            <p>Tiles:</p>
+
+            <div class="tilelist">
+                <input type="radio" id="t0" name="tileid" value="0" image="spacer.png" rotation="0" checked> <label
+                    for="t0">EMPTY</label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t1" name="tileid" value="1" image="gfx/theme-0/wall.jpg" rotation="0">
+                <label for="t1"><img class="thumb" src="gfx/theme-0/wall.jpg" title="WALL"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t2" name="tileid" value="2" image="gfx/theme-0/diamond.png" rotation="0"> <label
+                    for="t2"><img class="thumb" src="gfx/theme-0/diamond.png" title="DIAMOND"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t3" name="tileid" value="3" image="gfx/theme-0/door.png" rotation="0"> <label
+                    for="t3"><img
+                    class="thumb" src="gfx/theme-0/door.png" title="DOOR"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t4" name="tileid" value="4" image="gfx/theme-0/oneway.png" rotation="0"> <label
+                    for="t4"><img class="thumb" src="gfx/theme-0/oneway.png" title="ONEWAY_UP" style=""/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t5" name="tileid" value="5" image="gfx/theme-0/oneway.png" rotation="90"> <label
+                    for="t5"><img class="thumb" src="gfx/theme-0/oneway.png" title="ONEWAY_RIGHT"
+                                  style="-webkit-transform: rotate(90deg);transform: rotate(90deg);"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t6" name="tileid" value="6" image="gfx/theme-0/oneway.png" rotation="180">
+                <label
+                        for="t6"><img class="thumb" src="gfx/theme-0/oneway.png" title="ONEWAY_DOWN"
+                                      style="-webkit-transform: rotate(180deg);transform: rotate(180deg);"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t7" name="tileid" value="7" image="gfx/theme-0/oneway.png" rotation="270">
+                <label
+                        for="t7"><img class="thumb" src="gfx/theme-0/oneway.png" title="ONEWAY_LEFT"
+                                      style="-webkit-transform: rotate(270deg);transform: rotate(270deg);"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t8" name="tileid" value="8" image="gfx/theme-0/cycle.png" rotation="0"> <label
+                    for="t8"><img
+                    class="thumb" src="gfx/theme-0/cycle.png" title="CYCLE_VER"
+                    style="-webkit-transform: rotate(0deg);transform: rotate(0deg);"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t9" name="tileid" value="9" image="gfx/theme-0/cycle.png" rotation="90"> <label
+                    for="t9"><img class="thumb" src="gfx/theme-0/cycle.png" title="CYCLE_HOR"
+                                  style="-webkit-transform: rotate(90deg);transform: rotate(90deg);"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t10" name="tileid" value="10" image="gfx/theme-0/corner.png" rotation="0">
+                <label
+                        for="t10"><img class="thumb" src="gfx/theme-0/corner.png" title="CORNER_UP"
+                                       style=""/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t11" name="tileid" value="11" image="gfx/theme-0/corner.png" rotation="90">
+                <label
+                        for="t11"><img class="thumb" src="gfx/theme-0/corner.png" title="CORNER_RIGHT"
+                                       style="-webkit-transform: rotate(90deg);transform: rotate(90deg);"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t12" name="tileid" value="12" image="gfx/theme-0/corner.png" rotation="180">
+                <label
+                        for="t12"><img class="thumb" src="gfx/theme-0/corner.png" title="CORNER_DOWN"
+                                       style="-webkit-transform: rotate(180deg);transform: rotate(180deg);"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t13" name="tileid" value="13" image="gfx/theme-0/corner.png" rotation="270">
+                <label
+                        for="t13"><img class="thumb" src="gfx/theme-0/corner.png" title="CORNER_LEFT"
+                                       style="-webkit-transform: rotate(270deg);transform: rotate(270deg);"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t14" name="tileid" value="14" image="gfx/theme-0/one-stand.jpg" rotation="0">
+                <label
+                        for="t14"><img class="thumb" src="gfx/theme-0/one-stand.jpg" title="ONE_STAND"
+                                       style="-webkit-transform: rotate(0deg);transform: rotate(0deg);"/></label><br>
+            </div>
+            <div class="tilelist">
+                <input type="radio" id="t15" name="tileid" value="15" image="gfx/theme-0/moveable.png" rotation="0">
+                <label
+                        for="t15"><img class="thumb" src="gfx/theme-0/moveable.png" title="MOVABLE"
+                                       style="-webkit-transform: rotate(0deg);transform: rotate(0deg);"/></label><br>
+            </div>
+        </td>
+        <td valign="top">
+            <p>Level Raster:</p>
+
+            <div id="raster" title="Ein Level ben&ouml;tigt EINE T&uuml;r und mindestens einen Diamanten um zu funktionieren. Das rote Dreieck ist der Startpunkt von Riamond."></div>
+        </td>
+        <td valign="top">
+            <p>Existing Levels:<br/>
+                <select id="levels" title="Diese Levels gibt es schon."></select>
+            </p>
+
+            <p>Levelname</p>
+            <input type="text" id="levelname" title="Sei kreativ ;-)"/>
+
+            <p>Startpoint (red corner):<br/>
+                <select id="startpointx" title="Riamond X Startpunkt">
+                    <option value="25">Column 1</option>
+                    <option value="75">Column 2</option>
+                    <option value="125">Column 3</option>
+                    <option value="175">Column 4</option>
+                    <option value="225">Column 5</option>
+                    <option value="275">Column 6</option>
+                    <option value="325">Column 7</option>
+                    <option value="375">Column 8</option>
+                    <option value="425">Column 9</option>
+                    <option value="475">Column 10</option>
+                    <option value="525">Column 11</option>
+                    <option value="575">Column 12</option>
+                    <option value="625">Column 13</option>
+                    <option value="675">Column 14</option>
+                    <option value="725">Column 15</option>
+                    <option value="775">Column 16</option>
+                </select><br/>
+
+                <select id="startpointy" title="Riamond Y Startpunkt">
+                    <option value="25">Row 1</option>
+                    <option value="75">Row 2</option>
+                    <option value="125">Row 3</option>
+                    <option value="175">Row 4</option>
+                    <option value="225">Row 5</option>
+                    <option value="275">Row 6</option>
+                    <option value="325">Row 7</option>
+                    <option value="375">Row 8</option>
+                    <option value="425">Row 9</option>
+                    <option value="475">Row 10</option>
+                    <option value="525">Row 11</option>
+                    <option value="575">Row 12</option>
+                </select>
+            </p>
+
+            <p>Digging:<br/>
+                <select id="digging" title="Wenn Riamond in einem Level graben darf/mu&szlig; um ein Level zu l&ouml;sen, kann dies hier eingestellt werden. ">
+                    <option value="0">no digging</option>
+                    <option value="1">dig 1 time</option>
+                    <option value="2">dig 2 times</option>
+                    <option value="3">dig 3 times</option>
+                    <option value="4">dig 4 times</option>
+                    <option value="5">dig 5 times</option>
+                    <option value="6">dig 6 times</option>
+                    <option value="7">dig 7 times</option>
+                    <option value="8">dig 8 times</option>
+                    <option value="9">dig 9 times</option>
+                    <option value="-1">endless digging</option>
+                </select><br/>
+            </p>
+
+            <p>Night mode:<br/>
+                <input type="checkbox" id="nightmode" title="Aktiviert den Nachtmodus. Um Riamond herum wird das Level abgedunkelt." />
+            </p>
+
+            <p>Night mode radius:<br/>
+                <input type="text" id="nightmoderadius" title="Der Radius des Lichtkegels im Nachtmodus." />
+            </p>
+
+            <p>Themes:<br/>
+                <select id="themes" title="Die verschiedenen Themes die es gibt. Im Editor selbst wird aber nur das erste Theme verwendet."></select>
+            </p>
+
+            <p>
+                <input id="generate" type="button" value="Generate Level Data" title="Generiert die Leveldaten in der Output Textarea. 'Save to localStorage' und 'Send/Mail Level' rufen diese Funktion ebenfalls auf."/>
+                <input id="play" type="button" value="Play Level" title="&Ouml;ffnet das Editorlevel &uuml;ber einen Livelink. Zuerst muss man sich noch durch die Men&uuml;s klicken bis dieses endg&uuml;ltig erscheint."/>
+            </p>
+
+            <p>
+                <input id="savetostorage" type="button" value="Save to localStorage" title="Es kann ein Stand in den localStorage des Browsers gespeichert werden. Ein Undo gibt es nicht."/>
+                <input id="loadfromstorage" type="button" value="Load from localStorage" title="Level aus localStorage des Browsers laden."/>
+            </p>
+
+            <p>
+                <form action="">
+                    <input id="sendmail" class="sendmail" type="button" value="Send/Mail Level" title="Schicke das Level an den Meister ;-)"/>
+                    <input id="reset" class="reset" type="submit" value="Reset Editor" title="Reset Editor"/>
+                </form>
+            </p>
+
+            <p>Output:</p>
+
+            <p>
+            <textarea id="output"></textarea>
+            </p>
+
+        </td>
+    </tr>
+</table>
+
+
+
+<iframe class="lightbox" src="" width="800" height="600" id="playit" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style=""></iframe>
+
+
+</body>
+
+
+</html>

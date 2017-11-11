@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0 auto;
+    background: #222222; /* Old browsers */
+    background: -moz-linear-gradient(top,  #222222 0%, #333333 42%, #0a0105 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#222222), color-stop(42%,#333333), color-stop(100%,#0a0105)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #222222 0%,#333333 42%,#0a0105 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #222222 0%,#333333 42%,#0a0105 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #222222 0%,#333333 42%,#0a0105 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #222222 0%,#333333 42%,#0a0105 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#0a0105',GradientType=0 ); /* IE6-9 */
+
+}
+
+canvas {
+    background-color: #000;
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    cursor:url(http://www.motions-media.de/developing/riamond-rush/gfx/my-cursor.png), auto;
+}

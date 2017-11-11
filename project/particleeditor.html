@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Particle Editor</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="css/particleeditor.css" media="screen"/>
+
+    <script src="js/particle/functions.js"></script>
+    <script src="js/particle/vector2d.js"></script>
+    <script src="js/particle/rgbcolor.js"></script>
+    <script src="js/particle/particle.js"></script>
+    <script src="js/particle/emitter.js"></script>
+    <script src="js/editors/particle/main.js"></script>
+
+</head>
+<body>
+<h2>
+    Particle Editor
+
+    [Demos:
+    <select id="demos">
+        <option value="">-- select demo --</option>
+        <option value="atoms.json">atoms.json</option>
+        <option value="chemical.json">chemical.json</option>
+        <option value="cloudy.json">cloudy.json</option>
+        <option value="diamond-rain.json">diamond-rain.json</option>
+        <option value="raining-stars.json">raining-stars.json</option>
+        <option value="snow.json">snow.json</option>
+        <option value="snow-tunnel.json">snow-tunnel.json</option>
+        <option value="fire-green.json">fire-green.json</option>
+        <option value="riamond-rush-fire.json">riamond-rush-fire.json</option>
+        <option value="riamond-rush-intro.json">riamond-rush-intro.json</option>
+    </select>]
+    &nbsp;
+    [<a href="http://onebyonedesign.com/flash/particleeditor/" target="_blank">Particle Editor for Starling Framework</a>]
+    &nbsp;
+    [<a href="https://71squared.com/particledesigner" target="_blank">Particle Designer das Original</a>]
+
+</h2>
+
+
+<hr>
+<form name="particleeditor">
+<table>
+<tr>
+<td valign="top">
+    <div class="row"><label>type</label>
+        <select id="type" name="type">
+            <option>gravity</option>
+            <option>radial</option>
+        </select>
+    </div>
+    <div class="row"><label>additiveBlend</label>
+        <input id="additiveBlend" name="additiveBlend" type="checkbox" checked/>
+    </div>
+    <div class="row"><label>oneShot</label>
+        <input id="oneShot" name="oneShot" type="checkbox"/>
+    </div>
+    <div class="row"><label>scaleUniform</label>
+        <input id="scaleUniform" name="scaleUniform" type="checkbox" checked/>
+    </div>
+    <div>
+        <label>duration</label>
+        <input id="duration" name="duration" type="range" min="-1" max="1000" step="0.1" value="-1"
+               oninput="this.form.duration_V.value=this.value"/>
+        <input id="duration_V" name="duration_V" type="number" min="-1" max="1000" step="0.1" value="-1"
+               oninput="this.form.duration.value=this.value "/>
+    </div>
+    <div class="row"><label>emissionRate</label>
+        <input id="emissionRate" name="emissionRate" type="range" min="0" max="500" step="1" value="20"
+               oninput="this.form.emissionRate_V.value=this.value"/>
+        <input id="emissionRate_V" name="emissionRate_V" type="number" min="0" max="500" step="1" value="20"
+               oninput="this.form.emissionRate.value=this.value "/>
+    </div>
+    <div class="row"><label>life</label>
+        <input id="life" name="life" type="range" min="0" max="10" step="0.1" value="3"
+               oninput="this.form.life_V.value=this.value"/>
+        <input id="life_V" name="life_V" type="number" min="0" max="10" step="0.1" value="3"
+               oninput="this.form.life.value=this.value "/>
+    </div>
+    <div class="row"><label>lifeVariance</label>
+        <input id="lifeVariance" name="lifeVariance" type="range" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.lifeVariance_V.value=this.value"/>
+        <input id="lifeVariance_V" name="lifeVariance_V" type="number" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.lifeVariance.value=this.value "/>
+    </div>
+    <div class="row"><label>emitDelay</label>
+        <input id="emitDelay" name="emitDelay" type="range" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.emitDelay_V.value=this.value"/>
+        <input id="emitDelay_V" name="emitDelay_V" type="number" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.emitDelay.value=this.value "/>
+    </div>
+    <div class="row"><label>positionX</label>
+        <input id="positionX" name="positionX" type="range" min="0" max="2000" step="1" value="400"
+               oninput="this.form.positionX_V.value=this.value"/>
+        <input id="positionX_V" name="positionX_V" type="number" min="0" max="2000" step="1" value="400"
+               oninput="this.form.positionX.value=this.value "/>
+    </div>
+    <div class="row"><label>positionY</label>
+        <input id="positionY" name="positionY" type="range" min="0" max="2000" step="1" value="300"
+               oninput="this.form.positionY_V.value=this.value"/>
+        <input id="positionY_V" name="positionY_V" type="number" min="0" max="2000" step="1" value="300"
+               oninput="this.form.positionY.value=this.value "/>
+    </div>
+    <div class="row"><label>positionVarianceX</label>
+        <input id="positionVarianceX" name="positionVarianceX" type="range" min="0" max="2000" step="0.1" value="0"
+               oninput="this.form.positionVarianceX_V.value=this.value"/>
+        <input id="positionVarianceX_V" name="positionVarianceX_V" type="number" min="0" max="2000" step="0.1" value="0"
+               oninput="this.form.positionVarianceX.value=this.value "/>
+    </div>
+    <div class="row"><label>positionVarianceY</label>
+        <input id="positionVarianceY" name="positionVarianceY" type="range" min="0" max="2000" step="0.1" value="0"
+               oninput="this.form.positionVarianceY_V.value=this.value"/>
+        <input id="positionVarianceY_V" name="positionVarianceY_V" type="number" min="0" max="2000" step="0.1" value="0"
+               oninput="this.form.positionVarianceY.value=this.value "/>
+    </div>
+
+    <hr/>
+
+    <div class="row"><label>speed</label>
+        <input id="speed" name="speed" type="range" min="0" max="2000" step="0.1" value="0"
+               oninput="this.form.speed_V.value=this.value"/>
+        <input id="speed_V" name="speed_V" type="number" min="0" max="2000" step="0.1" value="0"
+               oninput="this.form.speed.value=this.value "/>
+    </div>
+    <div class="row"><label>speedVariance</label>
+        <input id="speedVariance" name="speedVariance" type="range" min="0" max="1000" step="0.1" value="0"
+               oninput="this.form.speedVariance_V.value=this.value"/>
+        <input id="speedVariance_V" name="speedVariance_V" type="number" min="0" max="1000" step="0.1" value="0"
+               oninput="this.form.speedVariance.value=this.value "/>
+    </div>
+    <div class="row"><label>angle</label>
+        <input id="angle" name="angle" type="range" min="0" max="360" step="0.1" value="0"
+               oninput="this.form.angle_V.value=this.value"/>
+        <input id="angle_V" name="angle_V" type="number" min="0" max="360" step="0.1" value="0"
+               oninput="this.form.angle.value=this.value "/>
+    </div>
+    <div class="row"><label>angleVariance</label>
+        <input id="angleVariance" name="angleVariance" type="range" min="0" max="360" step="0.1" value="0"
+               oninput="this.form.angleVariance_V.value=this.value"/>
+        <input id="angleVariance_V" name="angleVariance_V" type="number" min="0" max="360" step="0.1" value="0"
+               oninput="this.form.angleVariance.value=this.value "/>
+    </div>
+
+    <hr/>
+
+    <div class="row"><label>rotationStart</label>
+        <input id="rotationStart" name="rotationStart" type="range" min="0" max="360" step="0.1" value="0"
+               oninput="this.form.rotationStart_V.value=this.value"/>
+        <input id="rotationStart_V" name="rotationStart_V" type="number" min="0" max="360" step="0.1" value="0"
+               oninput="this.form.rotationStart.value=this.value "/>
+    </div>
+    <div class="row"><label>rotationStartVariance</label>
+        <input id="rotationStartVariance" name="rotationStartVariance" type="range" min="0" max="360" step="0.1"
+               value="0" oninput="this.form.rotationStartVariance_V.value=this.value"/>
+        <input id="rotationStartVariance_V" name="rotationStartVariance_V" type="number" min="0" max="360" step="0.1"
+               value="0" oninput="this.form.rotationStartVariance.value=this.value "/>
+    </div>
+    <div class="row"><label>rotationEnd</label>
+        <input id="rotationEnd" name="rotationEnd" type="range" min="0" max="360" step="0.1" value="0"
+               oninput="this.form.rotationEnd_V.value=this.value"/>
+        <input id="rotationEnd_V" name="rotationEnd_V" type="number" min="0" max="360" step="0.1" value="0"
+               oninput="this.form.rotationEnd.value=this.value "/>
+    </div>
+    <div class="row"><label>rotationEndVariance</label>
+        <input id="rotationEndVariance" name="rotationEndVariance" type="range" min="0" max="360" step="0.1" value="0"
+               oninput="this.form.rotationEndVariance_V.value=this.value"/>
+        <input id="rotationEndVariance_V" name="rotationEndVariance_V" type="number" min="0" max="360" step="0.1"
+               value="0" oninput="this.form.rotationEndVariance.value=this.value "/>
+    </div>
+
+    <hr/>
+
+    <div class="row"><label>radialAcceleration</label>
+        <input id="radialAcceleration" name="radialAcceleration" type="range" min="-5000" max="5000" step="0.1"
+               value="0" oninput="this.form.radialAcceleration_V.value=this.value"/>
+        <input id="radialAcceleration_V" name="radialAcceleration_V" type="number" min="-5000" max="5000" step="0.1"
+               value="0" oninput="this.form.radialAcceleration.value=this.value "/>
+    </div>
+    <div class="row"><label>radialAccelVariance</label>
+        <input id="radialAccelVariance" name="radialAccelVariance" type="range" min="-5000" max="5000" step="0.1"
+               value="0" oninput="this.form.radialAccelVariance_V.value=this.value"/>
+        <input id="radialAccelVariance_V" name="radialAccelVariance_V" type="number" min="-5000" max="5000" step="0.1"
+               value="0" oninput="this.form.radialAccelVariance.value=this.value "/>
+    </div>
+    <div class="row"><label>tangentialAcceleration</label>
+        <input id="tangentialAcceleration" name="tangentialAcceleration" type="range" min="-5000" max="5000" step="0.1"
+               value="0" oninput="this.form.tangentialAcceleration_V.value=this.value"/>
+        <input id="tangentialAcceleration_V" name="tangentialAcceleration_V" type="number" min="-5000" max="5000"
+               step="0.1" value="0" oninput="this.form.tangentialAcceleration.value=this.value "/>
+    </div>
+    <div class="row"><label>tangentialAccelVariance</label>
+        <input id="tangentialAccelVariance" name="tangentialAccelVariance" type="range" min="-5000" max="5000"
+               step="0.1" value="0" oninput="this.form.tangentialAccelVariance_V.value=this.value"/>
+        <input id="tangentialAccelVariance_V" name="tangentialAccelVariance_V" type="number" min="-5000" max="5000"
+               step="0.1" value="0" oninput="this.form.tangentialAccelVariance.value=this.value "/>
+    </div>
+
+    <hr/>
+
+    <div class="row"><label>gravityX</label>
+        <input id="gravityX" name="gravityX" type="range" min="-5000" max="5000" step="0.1" value="0"
+               oninput="this.form.gravityX_V.value=this.value"/>
+        <input id="gravityX_V" name="gravityX_V" type="number" min="-5000" max="5000" step="0.1" value="0"
+               oninput="this.form.gravityX.value=this.value "/>
+    </div>
+    <div class="row"><label>gravityY</label>
+        <input id="gravityY" name="gravityY" type="range" min="-5000" max="5000" step="0.1" value="0"
+               oninput="this.form.gravityY_V.value=this.value"/>
+        <input id="gravityY_V" name="gravityY_V" type="number" min="-5000" max="5000" step="0.1" value="0"
+               oninput="this.form.gravityY.value=this.value "/>
+    </div>
+
+    <hr/>
+
+    <div class="row"><label>maxRadius</label>
+        <input id="maxRadius" name="maxRadius" type="range" min="0" max="1000" step="0.1" value="0"
+               oninput="this.form.maxRadius_V.value=this.value"/>
+        <input id="maxRadius_V" name="maxRadius_V" type="number" min="0" max="1000" step="0.1" value="0"
+               oninput="this.form.maxRadius.value=this.value "/>
+    </div>
+    <div class="row"><label>maxRadiusVariance</label>
+        <input id="maxRadiusVariance" name="maxRadiusVariance" type="range" min="0" max="500" step="0.1" value="0"
+               oninput="this.form.maxRadiusVariance_V.value=this.value"/>
+        <input id="maxRadiusVariance_V" name="maxRadiusVariance_V" type="number" min="0" max="500" step="0.1" value="0"
+               oninput="this.form.maxRadiusVariance.value=this.value "/>
+    </div>
+    <div class="row"><label>minRadius</label>
+        <input id="minRadius" name="minRadius" type="range" min="0" max="1000" step="0.1" value="0"
+               oninput="this.form.minRadius_V.value=this.value"/>
+        <input id="minRadius_V" name="minRadius_V" type="number" min="0" max="1000" step="0.1" value="0"
+               oninput="this.form.minRadius.value=this.value "/>
+    </div>
+
+    <div class="row"><label>rotatePerSecond</label>
+        <input id="rotatePerSecond" name="rotatePerSecond" type="range" min="0" max="20" step="0.1" value="0"
+               oninput="this.form.rotatePerSecond_V.value=this.value"/>
+        <input id="rotatePerSecond_V" name="rotatePerSecond_V" type="number" min="0" max="20" step="0.1" value="0"
+               oninput="this.form.rotatePerSecond.value=this.value "/>
+    </div>
+    <div class="row"><label>rotatePerSecondVariance</label>
+        <input id="rotatePerSecondVariance" name="rotatePerSecondVariance" type="range" min="0" max="20" step="0.1"
+               value="0" oninput="this.form.rotatePerSecondVariance_V.value=this.value"/>
+        <input id="rotatePerSecondVariance_V" name="rotatePerSecondVariance_V" type="number" min="0" max="20" step="0.1"
+               value="0" oninput="this.form.rotatePerSecondVariance.value=this.value "/>
+    </div>
+
+    <hr/>
+
+    <div class="row"><label>sizeX</label>
+        <input id="sizeX" name="sizeX" type="range" min="0" max="10" step="0.1" value="1"
+               oninput="this.form.sizeX_V.value=this.value"/>
+        <input id="sizeX_V" name="sizeX_V" type="number" min="0" max="10" step="0.1" value="1"
+               oninput="this.form.sizeX.value=this.value "/>
+    </div>
+    <div class="row"><label>sizeY</label>
+        <input id="sizeY" name="sizeY" type="range" min="0" max="10" step="0.1" value="1"
+               oninput="this.form.sizeY_V.value=this.value"/>
+        <input id="sizeY_V" name="sizeY_V" type="number" min="0" max="10" step="0.1" value="1"
+               oninput="this.form.sizeY.value=this.value "/>
+    </div>
+    <div class="row"><label>sizeVarianceX</label>
+        <input id="sizeVarianceX" name="sizeVarianceX" type="range" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.sizeVarianceX_V.value=this.value"/>
+        <input id="sizeVarianceX_V" name="sizeVarianceX_V" type="number" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.sizeVarianceX.value=this.value "/>
+    </div>
+    <div class="row"><label>sizeVarianceY</label>
+        <input id="sizeVarianceY" name="sizeVarianceY" type="range" min="0" max="5000" step="0.1" value="0"
+               oninput="this.form.sizeVarianceY_V.value=this.value"/>
+        <input id="sizeVarianceY_V" name="sizeVarianceY_V" type="number" min="0" max="5000" step="0.1" value="0"
+               oninput="this.form.sizeVarianceY.value=this.value "/>
+    </div>
+    <div class="row"><label>endSizeX</label>
+        <input id="endSizeX" name="endSizeX" type="range" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.endSizeX_V.value=this.value"/>
+        <input id="endSizeX_V" name="endSizeX_V" type="number" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.endSizeX.value=this.value "/>
+    </div>
+    <div class="row"><label>endSizeY</label>
+        <input id="endSizeY" name="endSizeY" type="range" min="0" max="5000" step="0.1" value="0"
+               oninput="this.form.endSizeY_V.value=this.value"/>
+        <input id="endSizeY_V" name="endSizeY_V" type="number" min="0" max="5000" step="0.1" value="0"
+               oninput="this.form.endSizeY.value=this.value "/>
+    </div>
+    <div class="row"><label>endSizeVarianceX</label>
+        <input id="endSizeVarianceX" name="endSizeVarianceX" type="range" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.endSizeVarianceX_V.value=this.value"/>
+        <input id="endSizeVarianceX_V" name="endSizeVarianceX_V" type="number" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.endSizeVarianceX.value=this.value "/>
+    </div>
+    <div class="row"><label>endSizeVarianceY</label>
+        <input id="endSizeVarianceY" name="endSizeVarianceY" type="range" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.endSizeVarianceY_V.value=this.value"/>
+        <input id="endSizeVarianceY_V" name="endSizeVarianceY_V" type="number" min="0" max="10" step="0.1" value="0"
+               oninput="this.form.endSizeVarianceY.value=this.value "/>
+    </div>
+</td>
+
+<td valign="top">
+    <h4>color</h4>
+
+    <div class="row"><label>red</label>
+        <input id="colorR" name="colorR" type="range" min="0" max="255" step="1" value="255"
+               oninput="this.form.colorR_V.value=this.value"/>
+        <input id="colorR_V" name="colorR_V" type="number" min="0" max="255" step="1" value="255"
+               oninput="this.form.colorR.value=this.value "/>
+    </div>
+    <div class="row"><label>green</label>
+        <input id="colorG" name="colorG" type="range" min="0" max="255" step="1" value="255"
+               oninput="this.form.colorG_V.value=this.value"/>
+        <input id="colorG_V" name="colorG_V" min="0" max="255" step="1" type="number" value="255"
+               oninput="this.form.colorG.value=this.value"/>
+    </div>
+
+    <div class="row"><label>blue</label>
+        <input id="colorB" name="colorB" type="range" min="0" max="255" step="1" value="255"
+               oninput="this.form.colorB_V.value=this.value"/>
+        <input id="colorB_V" name="colorB_V" min="0" max="255" step="1" type="number" value="255"
+               oninput="this.form.colorB.value=this.value"/>
+    </div>
+    <div class="row"><label>alpha</label>
+        <input id="colorA" name="colorA" type="range" min="0" max="1" step="0.01" value="1"
+               oninput="this.form.colorA_V.value=this.value"/>
+        <input id="colorA_V" name="colorA_V" min="0" max="1" type="number" value="1"
+               oninput="this.form.colorA.value=this.value"/>
+    </div>
+
+    <hr/>
+
+    <h4>colorVariance</h4>
+
+    <div class="row"><label>red</label>
+        <input id="colorVarianceR" name="colorVarianceR" type="range" min="0" max="255" step="1" value="0"
+               oninput="this.form.colorVarianceR_V.value=this.value"/>
+        <input id="colorVarianceR_V" name="colorVarianceR_V" min="0" max="255" step="1" type="number" value="0"
+               oninput="this.form.colorVarianceR.value=this.value"/>
+    </div>
+    <div class="row"><label>green</label>
+        <input id="colorVarianceG" name="colorVarianceG" type="range" min="0" max="255" step="1" value="0"
+               oninput="this.form.colorVarianceG_V.value=this.value"/>
+        <input id="colorVarianceG_V" name="colorVarianceG_V" min="0" max="255" step="1" type="number" value="0"
+               oninput="this.form.colorVarianceG.value=this.value"/>
+    </div>
+    <div class="row"><label>blue</label>
+        <input id="colorVarianceB" name="colorVarianceB" type="range" min="0" max="255" step="1" value="0"
+               oninput="this.form.colorVarianceB_V.value=this.value"/>
+        <input id="colorVarianceB_V" name="colorVarianceB_V" min="0" max="255" step="1" type="number" value="0"
+               oninput="this.form.colorVarianceB.value=this.value"/>
+    </div>
+    <div class="row"><label>alpha</label>
+        <input id="colorVarianceA" name="colorVarianceA" type="range" min="0" max="1" step="0.01" value="0"
+               oninput="this.form.colorVarianceA_V.value=this.value"/>
+        <input id="colorVarianceA_V" name="colorVarianceA_V" min="0" max="1" type="number" value="0"
+               oninput="this.form.colorVarianceA.value=this.value"/>
+    </div>
+
+    <hr/>
+
+    <h4>endColor</h4>
+
+    <div class="row"><label>red</label>
+        <input id="endColorR" name="endColorR" type="range" min="0" max="255" step="1" value="255"
+               oninput="this.form.endColorR_V.value=this.value"/>
+        <input id="endColorR_V" name="endColorR_V" min="0" max="255" step="1" type="number" value="255"
+               oninput="this.form.endColorR.value=this.value"/>
+    </div>
+    <div class="row"><label>green</label>
+        <input id="endColorG" name="endColorG" type="range" min="0" max="255" step="1" value="255"
+               oninput="this.form.endColorG_V.value=this.value"/>
+        <input id="endColorG_V" name="endColorG_V" min="0" max="255" step="1" type="number" value="255"
+               oninput="this.form.endColorG.value=this.value"/>
+    </div>
+    <div class="row"><label>blue</label>
+        <input id="endColorB" name="endColorB" type="range" min="0" max="255" step="1" value="255"
+               oninput="this.form.endColorB_V.value=this.value"/>
+        <input id="endColorB_V" name="endColorB_V" min="0" max="255" step="1" type="number" value="255"
+               oninput="this.form.endColorB.value=this.value"/>
+    </div>
+    <div class="row"><label>alpha</label>
+        <input id="endColorA" name="endColorA" type="range" min="0" max="1" step="0.01" value="0"
+               oninput="this.form.endColorA_V.value=this.value"/>
+        <input id="endColorA_V" name="endColorA_V" min="0" max="1" type="number" value="0"
+               oninput="this.form.endColorA.value=this.value"/>
+    </div>
+
+    <hr/>
+
+    <h4>endColorVariance</h4>
+
+    <div class="row"><label>red</label>
+        <input id="endColorVarianceR" name="endColorVarianceR" type="range" min="0" max="255" step="1" value="0"
+               oninput="this.form.endColorVarianceR_V.value=this.value"/>
+        <input id="endColorVarianceR_V" name="endColorVarianceR_V" min="0" max="255" step="1" type="number" value="0"
+               oninput="this.form.endColorVarianceR.value=this.value"/>
+    </div>
+    <div class="row"><label>green</label>
+        <input id="endColorVarianceG" name="endColorVarianceG" type="range" min="0" max="255" step="1" value="0"
+               oninput="this.form.endColorVarianceG_V.value=this.value"/>
+        <input id="endColorVarianceG_V" name="endColorVarianceG_V" min="0" max="255" step="1" type="number" value="0"
+               oninput="this.form.endColorVarianceG.value=this.value"/>
+    </div>
+    <div class="row"><label>blue</label>
+        <input id="endColorVarianceB" name="endColorVarianceB" type="range" min="0" max="255" step="1" value="0"
+               oninput="this.form.endColorVarianceB_V.value=this.value"/>
+        <input id="endColorVarianceB_V" name="endColorVarianceB_V" min="0" max="255" step="1" type="number" value="0"
+               oninput="this.form.endColorVarianceB.value=this.value"/>
+    </div>
+    <div class="row"><label>alpha</label>
+        <input id="endColorVarianceA" name="endColorVarianceA" type="range" min="0" max="1" step="0.01" value="0"
+               oninput="this.form.endColorVarianceA_V.value=this.value"/>
+        <input id="endColorVarianceA_V" name="endColorVarianceA_V" min="0" max="1" type="number" value="0"
+               oninput="this.form.endColorVarianceA.value=this.value"/>
+    </div>
+
+    <hr/>
+
+    <div class="row"><label>imageData<br>drop png image here</label>
+
+        <div id="holder"></div>
+        <div id="status"></div>
+    </div>
+
+</td>
+
+<td valign="top" class="can">
+
+</td>
+</tr>
+</table>
+</form>
+<hr>
+
+</body>
+</html>

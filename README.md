@@ -29,3 +29,17 @@ If you have a installed (L/W/M)AMP i think there is nothing to say ;-)
 ## Play Riamond Rush using tweaked browser
 
 Some time ago the Safari development tool had a option to allow it to open local files and handle them like opened from a server. I haven't looked if other browsers have a similar feature but i think there is a way ^d^
+
+## Some videos of Riamond Rush
+
+Riamond Rush gameplay
+
+[![Riamond Rush gameplay](https://img.youtube.com/vi/DCGrNzqN78M/0.jpg)](https://www.youtube.com/watch?v=DCGrNzqN78M)
+
+Riamond Rush on Ouya
+
+[![Riamond Rush on Ouya](https://img.youtube.com/vi/YTEdCJPEG8o/0.jpg)](https://www.youtube.com/watch?v=YTEdCJPEG8o)
+
+Riamond Rush on iPad
+
+[![Riamond Rush on iPad](https://img.youtube.com/vi/uBxemqIBkJc/0.jpg)](https://www.youtube.com/watch?v=uBxemqIBkJc)

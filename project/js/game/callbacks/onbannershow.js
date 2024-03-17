@@ -1,3 +1,0 @@
-GameCallbacks.prototype.onBannerShow = function () {
-}
-

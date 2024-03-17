@@ -10,30 +10,6 @@ GameInit.prototype.main = function () {
     requestAnimationFrame(Game.fn.loop)
 }
 
-
-GameInit.prototype.layoutBanner = function () {
-    var rect = banner.getRectangle();
-    console.log("rect.x: " + rect.x + ", rect.y: " + rect.y + ", rect.width: " + rect.width + ", rect.height: " + rect.height);
-    var dpr = window.devicePixelRatio;
-    console.log('window.devicePixelRatio: ' + dpr)
-    //if (demo.position == CocoonJS.Ad.BannerLayout.TOP_CENTER) {
-    //    rect.x = window.innerWidth * dpr / 2 - rect.width / 2;
-    //    rect.y = 0;
-    //
-    //} else {
-    rect.x = window.innerWidth * dpr / 2 - rect.width / 2;
-    rect.y = window.innerHeight * dpr - rect.height;
-
-    console.log("rect.x: " + rect.x + ", rect.y: " + rect.y + ", rect.width: " + rect.width + ", rect.height: " + rect.height);
-
-    //}
-
-    banner.setRectangle(rect);
-    if (!Game.bannerHidden) {
-        banner.showBanner();
-    }
-}
-
 GameInit.prototype.canvas = function () {
     can = document.createElement('canvas');
     can.width = 800
@@ -165,10 +141,6 @@ GameInit.prototype.levelscreen = function () {
 }
 
 GameInit.prototype.gamescreen = function () {
-    if (banner) {
-        Game.bannerHidden = true
-        banner.hideBanner()
-    }
 
     player = null
     Game.entities = []
@@ -189,10 +161,6 @@ GameInit.prototype.gamescreen = function () {
 }
 
 GameInit.prototype.finalscreen = function () {
-    if (banner) {
-        Game.bannerHidden = false
-        banner.showBanner()
-    }
 
     player = null
     Game.entities = []

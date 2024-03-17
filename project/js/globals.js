@@ -1,4 +1,4 @@
-var can,
+let can,
     ctx,
     bcan,
     bctx,
@@ -15,8 +15,10 @@ var can,
     editorLevel,
 
 //audio
-    walk,
+    walk,   
     digg,
+    rotate,
+    lock,
     opendoor,
     diamond,
     success,

@@ -152,7 +152,7 @@ GameCreate.prototype.gamescreenObjects = function () {
     Game.entities.push(title)
 
     var tween = new TWEEN.Tween({x: title.x, y: title.y})
-        .to({y: 50}, 1000)
+        .to({y: 250}, 1000)
         .easing(TWEEN.Easing.Elastic.Out)
         .onUpdate(function () {
             title.y = this.y

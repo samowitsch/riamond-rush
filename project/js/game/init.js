@@ -28,11 +28,8 @@ GameInit.prototype.canvas = function () {
     bctx = bcan.getContext('2d', {antialias: true})
 
 
-    can.addEventListener('click', function (evt) {
-        
+    can.addEventListener('click', function (evt) {        
         var rect = can.getBoundingClientRect();
-
-        console.log([can, rect, evt]);
 
         var scalingRatioX = evt.target.width / evt.target.clientWidth,
             scalingRatioY = evt.target.height / evt.target.clientHeight
@@ -40,7 +37,7 @@ GameInit.prototype.canvas = function () {
         Game.click = {
             x: (evt.layerX - rect.left) * scalingRatioX,
             y: (evt.layerY - rect.top)  * scalingRatioY
-    }
+        }
     })
 
 }
@@ -66,45 +63,69 @@ GameInit.prototype.resources = function () {
 }
 
 GameInit.prototype.sound = function () {
-    sfxback = new Audio()
+    sfxback = new Audio('sfx/sound-title.ogg')
     sfxback.volume = 0.4
     sfxback.loop = true
-    sfxback.src = 'sfx/sound-title.ogg'
-    sfxback.play()
-    sfxback.addEventListener('canplaythrough', function(e) {
-//        console.log("audio disposed");
-//        if (navigator.isCocoonJS) {
-//            sfxback.dispose();
-//        }
+    sfxback.autoplay = true
+    sfxback.oncanplay = function(event){
+        var playedPromise = sfxback.play();
+        if (playedPromise) {
+            playedPromise.catch((e) => {
+                console.log(e)
+                if (e.name === 'NotAllowedError' || e.name === 'NotSupportedError') {
+                    console.log(e.name);
+                }
+            }).then(() => {
+
+            });
+        }
+    }
+
+
+    btnSound = new AudioProxy({
+        url: '/sfx/btn-sound.ogg'
     });
 
-    btnSound = new Audio()
-    btnSound.src = 'sfx/btn-sound.ogg'
+    btnTick = new AudioProxy({
+        url: '/sfx/btn-tick.ogg'
+    });
 
-    btnTick = new Audio()
-    btnTick.src = 'sfx/btn-tick.ogg'
+    diamond = new AudioProxy({
+        url: '/sfx/diamond.ogg',
+        volume: 0.1
+    });
 
-    diamond = new Audio()
-    diamond.volume = 0.4
-    diamond.src = 'sfx/diamond.ogg'
+    lock = new AudioProxy({
+        url: '/sfx/save-lock.ogg'
+    });
 
-    success = new Audio()
-    diamond.volume = 0.4
-    success.src = 'sfx/success.ogg'
+    rotate = new AudioProxy({
+        url: '/sfx/rotate.ogg'
+    });
 
-    walk = new Audio()
-    walk.volume = 0.4
-    walk.src = 'sfx/walk.ogg'
+    success = new AudioProxy({
+        url: '/sfx/success.ogg',
+        volume: 0.4
+    });
 
-    digg = new Audio()
-    digg.src = 'sfx/digg.ogg'
+    walk = new AudioProxy({
+        url: '/sfx/walk.ogg',
+        volume: 0.4
+    });
 
-    opendoor = new Audio()
-    opendoor.src = 'sfx/door.ogg'
+    digg = new AudioProxy({
+        url: '/sfx/digg.ogg'
+    });
 
-    playerVoice = new Audio()
-    playerVoice.src = 'sfx/hey-dude.ogg'
-    playerVoice.volume = 0.7
+    opendoor = new AudioProxy({
+        url: '/sfx/opendoor.ogg'
+    });
+
+    playerVoice = new AudioProxy({
+        url: '/sfx/hey-dude.ogg',
+        volume: 0.7
+    });
+
 }
 
 GameInit.prototype.startscreen = function () {

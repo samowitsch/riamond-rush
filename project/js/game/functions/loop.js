@@ -33,16 +33,6 @@ GameFunctions.prototype.loop = function () {
 
             })
 
-            btnFB.isClicked(function () {
-                window.open(Game.links.Facebook, '_blank');
-            })
-
-            btnTW.isClicked(function () {
-
-                window.open(Game.links.Twitter, '_blank');
-
-            })
-
 
         }
         else if (GAMESTATE_CURRENT === GAMESTATE_EMHSCREEN) {

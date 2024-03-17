@@ -13,6 +13,7 @@ function OneStand(opt) {
 
 OneStand.prototype.trigger = function () {
 	this.locked = true
+	lock.play();
 }
 
 OneStand.prototype.draw = function () {

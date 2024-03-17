@@ -45,34 +45,19 @@ GameCreate.prototype.startscreenObjects = function () {
         y: can.height - 125,
         audio: btnSound
     })
-    btnFB = new Button({
-        atlasimage: atlasUI.image,
-        atlasdata: atlasUI.getPicByName('btn-facebook'),
-        x: -400,
-        y: can.height - 125,
-        audio: btnSound
-    })
-    btnTW = new Button({
-        atlasimage: atlasUI.image,
-        atlasdata: atlasUI.getPicByName('btn-twitter'),
-        x: -400,
-        y: can.height - 125,
-        audio: btnSound
-    })
+
 
     btnGroupStart = new ButtonGroup({
         x: -600,
         y: can.height - 200,
         width: 500,
         type: 'hor',
-        buttons: [btnPlay, btnAbout, btnFB, btnTW]
+        buttons: [btnPlay, btnAbout]
     })
 
     Game.entities.push(btnGroupStart)
     Game.entities.push(btnPlay)
     Game.entities.push(btnAbout)
-    Game.entities.push(btnFB)
-    Game.entities.push(btnTW)
 
     Game.tweens.startScreenIn()
 }

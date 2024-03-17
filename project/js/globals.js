@@ -29,8 +29,6 @@ var can,
     atlasUI,
     atlasGame,
 
-    banner = false,
-
 // screen stuff
     title,
     riamond,

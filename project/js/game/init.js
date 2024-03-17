@@ -3,23 +3,13 @@ function GameInit() {
 }
 
 GameInit.prototype.main = function () {
-    this.canvas()
     this.resources()
+    this.canvas()
     this.sound()
-    this.banner()
     this.startscreen()
     requestAnimationFrame(Game.fn.loop)
 }
 
-GameInit.prototype.banner = function () {
-    if (navigator.isCocoonJS) {
-        banner = CocoonJS.Ad.createBanner(Game.bannerParams);
-        banner.onBannerShown.addEventListener(Game.callbacks.onBannerShow);
-        banner.onBannerHidden.addEventListener(Game.callbacks.onBannerHidden);
-        banner.onBannerReady.addEventListener(Game.callbacks.onBannerReady);
-        banner.refreshBanner()
-    }
-}
 
 GameInit.prototype.layoutBanner = function () {
     var rect = banner.getRectangle();
@@ -45,49 +35,38 @@ GameInit.prototype.layoutBanner = function () {
 }
 
 GameInit.prototype.canvas = function () {
-    can = document.createElement(navigator.isCocoonJS ? 'screencanvas' : 'canvas');
+    can = document.createElement('canvas');
     can.width = 800
     can.height = 600
     document.body.appendChild(can)
 
-    if (navigator.isCocoonJS) {
-        // touchmove, touchstart, touchend
-        can.addEventListener('touchmove', function (evt) {
-
-            Game.click = {
-                x: evt.touches[0].pageX,
-                y: evt.touches[0].pageY
-            }
-
-        })
-
-        can.addEventListener('touchend', function (evt) {
-
-            Game.click = {
-                x: evt.changedTouches[0].pageX,
-                y: evt.changedTouches[0].pageY
-            }
-
-        })
-
-    } else {
-
-    }
 
     ctx = can.getContext('2d', {antialias: true})
 
     // backbuffer canvas
-    bcan = document.createElement(navigator.isCocoonJS ? 'screencanvas' : 'canvas')
+    bcan = document.createElement('canvas')
     bcan.width = 800
     bcan.height = 600
 
     // offscreen canvas buffer
     bctx = bcan.getContext('2d', {antialias: true})
 
-    // fix font size for cocoonjs runtime
-    if (Game.isCocoonJS) {
-        bctx.font = '13pt Calibri';
+
+    can.addEventListener('click', function (evt) {
+        
+        var rect = can.getBoundingClientRect();
+
+        console.log([can, rect, evt]);
+
+        var scalingRatioX = evt.target.width / evt.target.clientWidth,
+            scalingRatioY = evt.target.height / evt.target.clientHeight
+
+        Game.click = {
+            x: (evt.layerX - rect.left) * scalingRatioX,
+            y: (evt.layerY - rect.top)  * scalingRatioY
     }
+    })
+
 }
 
 GameInit.prototype.resources = function () {
@@ -153,10 +132,7 @@ GameInit.prototype.sound = function () {
 }
 
 GameInit.prototype.startscreen = function () {
-    if (banner) {
-        Game.bannerHidden = false
-        banner.showBanner()
-    }
+
 
     sumpoints -= points
     points = 0

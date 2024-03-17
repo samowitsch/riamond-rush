@@ -5,7 +5,6 @@ var Game = {
     click: false,
     mobile: (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)),
     bannerHidden: false,
-    isCocoonJS: navigator.isCocoonJS ? true : false,
     countdownID: false,
     links: {
         RiamondRush: 'http://goo.gl/AUfYxm',

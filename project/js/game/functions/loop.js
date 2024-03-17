@@ -34,22 +34,12 @@ GameFunctions.prototype.loop = function () {
             })
 
             btnFB.isClicked(function () {
-
-                if (Game.isCocoonJS) {
-                    CocoonJS.App.openURL(Game.links.Facebook);
-                } else {
-                    window.open(Game.links.Facebook, '_blank');
-                }
-
+                window.open(Game.links.Facebook, '_blank');
             })
 
             btnTW.isClicked(function () {
 
-                if (Game.isCocoonJS) {
-                    CocoonJS.App.openURL(Game.links.Twitter);
-                } else {
-                    window.open(Game.links.Twitter, '_blank');
-                }
+                window.open(Game.links.Twitter, '_blank');
 
             })
 

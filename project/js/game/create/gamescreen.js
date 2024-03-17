@@ -161,7 +161,7 @@ GameCreate.prototype.gamescreenObjects = function () {
 
             setTimeout(function () {
                 var tween = new TWEEN.Tween({x: title.x, y: title.y})
-                    .to({y: -50}, 1000)
+                    .to({y: 0}, 2000)
                     .easing(TWEEN.Easing.Elastic.Out)
                     .onUpdate(function () {
                         title.y = this.y

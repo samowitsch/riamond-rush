@@ -29,57 +29,65 @@ function PlayerDesktop(opt) {
                 this.currentDirection = WALK_LEFT
                 this.atlasdata = this.frames.left
 
-                    if (map.canIGoto(this.x, this.y, WALK_LEFT)) {
-                        map.triggerCurrent(this.x, this.y)
-                        this.x -= 50
-                        walk.play()
-                    }
+                if (map.canIGoto(this.x, this.y, WALK_LEFT)) {
+                    map.triggerCurrent(this.x, this.y)
+                    this.x -= 50
+                    walk.play()
+                }
 
             }
             if (keyCode == KEY_UP) { //up
                 this.currentDirection = WALK_UP
                 this.atlasdata = this.frames.up
 
-                    if (map.canIGoto(this.x, this.y, WALK_UP)) {
-                        map.triggerCurrent(this.x, this.y)
-                        this.y -= 50
-                        walk.play()
-                    }
+                if (map.canIGoto(this.x, this.y, WALK_UP)) {
+                    map.triggerCurrent(this.x, this.y)
+                    this.y -= 50
+                    walk.play()
+                }
 
             }
             if (keyCode == KEY_RIGHT) { //right
                 this.currentDirection = WALK_RIGHT
                 this.atlasdata = this.frames.right
 
-                    if (map.canIGoto(this.x, this.y, WALK_RIGHT)) {
-                        map.triggerCurrent(this.x, this.y)
-                        this.x += 50
-                        walk.play()
-                    }
+                if (map.canIGoto(this.x, this.y, WALK_RIGHT)) {
+                    map.triggerCurrent(this.x, this.y)
+                    this.x += 50
+                    walk.play()
+                }
 
             }
             if (keyCode == KEY_DOWN) { //down
                 this.currentDirection = WALK_DOWN
                 this.atlasdata = this.frames.down
 
-                    if (map.canIGoto(this.x, this.y, WALK_DOWN)) {
-                        map.triggerCurrent(this.x, this.y)
-                        this.y += 50
-                        walk.play()
-                    }
+                if (map.canIGoto(this.x, this.y, WALK_DOWN)) {
+                    map.triggerCurrent(this.x, this.y)
+                    this.y += 50
+                    walk.play()
+                }
 
             }
 
             if (map.checkForDiamond(this.x, this.y)) {
                 Game.fn.removeDiamondByPosition(this.x, this.y)
+                diamondCounter.incrementDiamondFound(this.x, this.y)
             }
         }
 
-        if (keyCode == 82) { //R
+        if (keyCode == KEY_R) {
             Game.callbacks.restart()
         }
 
-        if (keyCode == 68 && this.digging != 0) { //D
+        if (keyCode == KEY_ESC) {
+            sfxback.pause()
+            sfxback.src = 'sfx/sound-title.ogg'
+            sfxback.play()
+            Game.init.startscreen()
+        }
+
+        if ((keyCode == KEY_D || keyCode == KEY_SPACE) && this.digging != 0) {
 
             if (map.digTo(this.x, this.y, this.currentDirection)) {
                 digg.play()
@@ -114,7 +122,7 @@ PlayerDesktop.prototype.draw = function () {
 
     if (this.nightmode) {
         bctx.drawImage(this.torch, this.x - 25, this.y - 25)
-        emitterPlayer.position.set({x: this.x - 15, y: this.y - 15})
+        emitterPlayer.position.set({ x: this.x - 15, y: this.y - 15 })
     }
 
     if (this.digging > 0) {

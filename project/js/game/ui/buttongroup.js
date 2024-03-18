@@ -2,8 +2,8 @@ function ButtonGroup(opt) {
 
     this.buttons = opt.buttons || []
 
-    if ( this.buttons.length < 2) {
-        throw 'min. Buttons needed for ButtonGroup'
+    if (this.buttons.length < 2) {
+        throw 'min. 2 Buttons needed for ButtonGroup'
     }
 
     this.x = opt.x || 0

@@ -48,7 +48,7 @@ GameCreate.prototype.gamescreenObjects = function () {
         })
     }
 
-    map = new Map(currentlevel)
+    map = new LevelMap(currentlevel)
 
     Game.entities.push(player)
 
@@ -171,5 +171,16 @@ GameCreate.prototype.gamescreenObjects = function () {
 
         })
         .start();
+
+    diamondCounter = new DiamondCounter({
+        diamondsNeeded: currentlevel.pointsToFinish / 20,
+        position: {
+            x: 20,
+            y: 580
+        }
+    })
+
+    Game.entities.push(diamondCounter)
+
 }
 

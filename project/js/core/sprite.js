@@ -12,7 +12,7 @@ function Sprite(opt) {
 
     this.scale = opt.scale || 1
 
-    this.alpha = 1
+    this.alpha = opt.alpha || 1
     this.distanceTo = opt.distanceTo || false
 
     this.xspeed = opt.xspeed || 0

@@ -1,4 +1,4 @@
-function Map(currentlevel) {
+function LevelMap(currentlevel) {
     this.map = currentlevel.data
 
     currenttheme = Themes[currentlevel.theme];
@@ -262,7 +262,7 @@ function Map(currentlevel) {
     }
 }
 
-Map.prototype.digTo = function (x, y, direction) {
+LevelMap.prototype.digTo = function (x, y, direction) {
     var targetX = x,
         targetY = y;
 
@@ -300,7 +300,7 @@ Map.prototype.digTo = function (x, y, direction) {
     return false
 }
 
-Map.prototype.canIGoto = function (x, y, direction) {
+LevelMap.prototype.canIGoto = function (x, y, direction) {
     var currentX = targetX = x,
         currentY = targetY = y;
 
@@ -537,7 +537,7 @@ Map.prototype.canIGoto = function (x, y, direction) {
     return false
 }
 
-Map.prototype.triggerCurrent = function (x, y) {
+LevelMap.prototype.triggerCurrent = function (x, y) {
     var _x = (x - 25) / 50,
         _y = (y - 25) / 50,
         _pos = (16 * _y) + _x
@@ -553,7 +553,7 @@ Map.prototype.triggerCurrent = function (x, y) {
 
 }
 
-Map.prototype.checkForDiamond = function (x, y) {
+LevelMap.prototype.checkForDiamond = function (x, y) {
     var _x = (x - 25) / 50,
         _y = (y - 25) / 50;
 

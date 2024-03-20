@@ -2,6 +2,7 @@ PlayerDesktop.prototype = new Sprite({})
 PlayerDesktop.prototype.constructor = PlayerDesktop
 function PlayerDesktop(opt) {
     Sprite.call(this, opt)
+    _self = this
 
     this.canWalk = true
 
@@ -21,88 +22,172 @@ function PlayerDesktop(opt) {
     this.torch = new Image()
     this.torch.src = 'gfx/torch.png'
 
+    if (gamePadEvents === null) {
+        gamePadEvents = joypad.on('button_press', function (e) {
+            console.log(e.detail);
+
+            var buttonName = e.detail.buttonName;
+
+            // button_12 -> up
+            if (buttonName === 'button_12' && this.canWalk) {
+                _self.up();
+            }
+
+            // button_13 -> down
+            if (buttonName === 'button_13' && this.canWalk) {
+                _self.down()
+            }
+
+            // button_14 -> left
+            if (buttonName === 'button_14' && this.canWalk) {
+                _self.left()
+            }
+
+            // button_15 -> right
+            if (buttonName === 'button_15' && this.canWalk) {
+                _self.right()
+            }
+
+            _self.checkForDiamond()
+
+
+            // button_0 -> button 0
+            if (buttonName === 'button_0') {
+                _self.digg()
+            }
+
+            // button_1 -> button 1
+            if (buttonName === 'button_1') {
+
+            }
+
+            // button_8 -> select
+            if (buttonName === 'button_8') {
+                this.esc()
+            }
+
+            // button_9 -> start
+            if (buttonName === 'button_9') {
+                this.restart()
+            }
+
+
+        }.bind(this));
+
+    }
+
     document.onkeydown = function (evt) {
         this.idle = 0
-        if (this.canWalk) {
-            var keyCode = evt.keyCode
-            if (keyCode == KEY_LEFT) { //left
-                this.currentDirection = WALK_LEFT
-                this.atlasdata = this.frames.left
-
-                if (map.canIGoto(this.x, this.y, WALK_LEFT)) {
-                    map.triggerCurrent(this.x, this.y)
-                    this.x -= 50
-                    walk.play()
-                }
-
-            }
-            if (keyCode == KEY_UP) { //up
-                this.currentDirection = WALK_UP
-                this.atlasdata = this.frames.up
-
-                if (map.canIGoto(this.x, this.y, WALK_UP)) {
-                    map.triggerCurrent(this.x, this.y)
-                    this.y -= 50
-                    walk.play()
-                }
-
-            }
-            if (keyCode == KEY_RIGHT) { //right
-                this.currentDirection = WALK_RIGHT
-                this.atlasdata = this.frames.right
-
-                if (map.canIGoto(this.x, this.y, WALK_RIGHT)) {
-                    map.triggerCurrent(this.x, this.y)
-                    this.x += 50
-                    walk.play()
-                }
-
-            }
-            if (keyCode == KEY_DOWN) { //down
-                this.currentDirection = WALK_DOWN
-                this.atlasdata = this.frames.down
-
-                if (map.canIGoto(this.x, this.y, WALK_DOWN)) {
-                    map.triggerCurrent(this.x, this.y)
-                    this.y += 50
-                    walk.play()
-                }
-
-            }
-
-            if (map.checkForDiamond(this.x, this.y)) {
-                Game.fn.removeDiamondByPosition(this.x, this.y)
-                diamondCounter.incrementDiamondFound(this.x, this.y)
-            }
+        var keyCode = evt.keyCode
+        if (keyCode == KEY_LEFT && this.canWalk) { //left
+            this.left()
         }
+        if (keyCode == KEY_UP && this.canWalk) { //up
+            this.up()
+        }
+        if (keyCode == KEY_RIGHT && this.canWalk) { //right
+            this.right()
+
+        }
+        if (keyCode == KEY_DOWN && this.canWalk) { //down
+            this.down()
+        }
+        this.checkForDiamond()
 
         if (keyCode == KEY_R) {
-            Game.callbacks.restart()
+            this.restart()
         }
 
         if (keyCode == KEY_ESC) {
-            sfxback.pause()
-            sfxback.src = 'sfx/sound-title.ogg'
-            sfxback.play()
-            Game.init.startscreen()
+            this.esc()
         }
 
-        if ((keyCode == KEY_D || keyCode == KEY_SPACE) && this.digging != 0) {
-
-            if (map.digTo(this.x, this.y, this.currentDirection)) {
-                digg.play()
-                if (this.digging > 0) {
-                    this.digging -= 1
-                    if (this.digging === 0) {
-                        btnIngameDigg.visible = false
-                    }
-                }
-            }
-
+        if ((keyCode == KEY_D || keyCode == KEY_SPACE)) {
+            this.digg()
         }
 
 
     }.bind(this)
+}
+
+
+
+PlayerDesktop.prototype.up = function () {
+    this.currentDirection = WALK_UP
+    this.atlasdata = this.frames.up
+
+    if (map.canIGoto(this.x, this.y, WALK_UP)) {
+        map.triggerCurrent(this.x, this.y)
+        this.y -= 50
+        walk.play()
+    }
+}
+PlayerDesktop.prototype.down = function () {
+    this.currentDirection = WALK_DOWN
+    this.atlasdata = this.frames.down
+
+    if (map.canIGoto(this.x, this.y, WALK_DOWN)) {
+        map.triggerCurrent(this.x, this.y)
+        this.y += 50
+        walk.play()
+    }
+}
+PlayerDesktop.prototype.left = function () {
+    this.currentDirection = WALK_LEFT
+    this.atlasdata = this.frames.left
+
+    if (map.canIGoto(this.x, this.y, WALK_LEFT)) {
+        map.triggerCurrent(this.x, this.y)
+        this.x -= 50
+        walk.play()
+    }
+}
+PlayerDesktop.prototype.right = function () {
+    this.currentDirection = WALK_RIGHT
+    this.atlasdata = this.frames.right
+
+    if (map.canIGoto(this.x, this.y, WALK_RIGHT)) {
+        map.triggerCurrent(this.x, this.y)
+        this.x += 50
+        walk.play()
+    }
+}
+PlayerDesktop.prototype.restart = function () {
+    Game.callbacks.restart()
+}
+PlayerDesktop.prototype.esc = function () {
+    sfxback.pause()
+    sfxback.src = 'sfx/sound-title.ogg'
+    sfxback.play()
+    Game.init.startscreen()
+}
+PlayerDesktop.prototype.digg = function () {
+    if (this.digging === 0) {
+        return
+    }
+
+    if (map.digTo(this.x, this.y, this.currentDirection)) {
+        digg.play()
+        if (this.digging > 0) {
+            this.digging -= 1
+            if (this.digging === 0) {
+                btnIngameDigg.visible = false
+            }
+            joypad.vibrate(gamepad, {
+                startDelay: 0,
+                duration: 100,
+                weakMagnitude: 1,
+                strongMagnitude: 1
+            });
+        }
+    }
+}
+
+PlayerDesktop.prototype.checkForDiamond = function () {
+    if (map.checkForDiamond(this.x, this.y)) {
+        Game.fn.removeDiamondByPosition(this.x, this.y)
+        diamondCounter.incrementDiamondFound(this.x, this.y)
+    }
 }
 
 

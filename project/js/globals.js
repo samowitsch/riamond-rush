@@ -14,6 +14,8 @@ let can,
     currenttheme,
     door,
     editorLevel,
+    gamepad = null,
+    gamePadEvents = null,
 
 //audio
     walk,

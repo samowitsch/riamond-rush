@@ -1,0 +1,14 @@
+{
+    "name": "samowitsch/riamond-rush",
+    "description": "Riamond Rush javascript gaming project",
+    "type": "project",
+    "require": {
+        "andres-montanez/magallanes": "^5.0"
+    },
+    "authors": [
+        {
+            "name": "Christian Sonntag",
+            "email": "info@motions-media.de"
+        }
+    ]
+}

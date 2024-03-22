@@ -28,3 +28,13 @@ canvas {
     height: 100%;
     cursor:url(http://www.motions-media.de/developing/riamond-rush/gfx/my-cursor.png), auto;
 }
+
+.bar{
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #111;
+    border-bottom: 1px solid #333;
+    padding: 0 0 5px;
+    font-family: monospace;
+}

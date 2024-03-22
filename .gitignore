@@ -2,4 +2,6 @@
 .idea
 resources/
 
+/bin
+/deploy-log
 /vendor/

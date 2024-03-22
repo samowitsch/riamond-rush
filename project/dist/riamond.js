@@ -3072,11 +3072,6 @@ function PlayerDesktop(opt) {
                 _self.digg()
             }
 
-            // // button_1 -> button 1
-            // if (buttonName === 'button_1') {
-
-            // }
-
             // button_8 -> select
             if (buttonName === 'button_8') {
                 this.esc()

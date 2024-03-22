@@ -30,11 +30,28 @@ canvas {
 }
 
 .bar{
-    display: block;
-    width: 100%;
-    text-align: center;
     background: #111;
     border-bottom: 1px solid #333;
-    padding: 0 0 5px;
+    padding: 2px;
     font-family: monospace;
+    font-size: 9px;
+    color: #fff;
+    position: absolute;
+}
+
+.bar a {
+    display: block;
+    text-decoration: none;
+    padding: 2px;
+}
+
+.bar a:hover {
+    color: #eee;
+    background-color: #333;
+}
+
+@media (max-width: 1320px) {
+    .bar {
+        display: none;
+    }
 }

@@ -11,11 +11,11 @@ function DiamondCounter(opt) {
             uid: i,
             atlasimage: atlasGame.image,
             atlasdata: atlasGame.getPicByName('diamond'),
-            x: this.position.x + (i * 25),
+            x: this.position.x + (i * 20),
             y: this.position.y,
             points: 20,
-            scale: 0.7,
-            alpha: 0.6
+            scale: 0.5,
+            alpha: 0.5
         })
         this.diamonds.push(diamond)
     }

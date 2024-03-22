@@ -1,31 +1,30 @@
 #!/bin/bash
 
-path=js
+path=dist
 
 timestamp() {
   date +"%s"
 }
 
-#chmod ugo+x combine.sh 
+#chmod ugo+x combine.sh
 
 echo "$(timestamp): start building riamond"
 
 #./js/libs/screenfull.min.js \
 
 
-cat ./js/CocoonJSExtensions/cocoon.js \
-./js/CocoonJSExtensions/CocoonJS.js \
-./js/CocoonJSExtensions/CocoonJS_App.js \
-./js/CocoonJSExtensions/CocoonJS_Ad.js \
-./js/particle/functions.js \
+cat ./js/particle/functions.js \
 ./js/particle/vector2d.js \
 ./js/particle/rgbcolor.js \
 ./js/particle/particle.js \
 ./js/particle/emitter.js \
 ./js/common/util.js \
 ./js/libs/requestAnimFrame.js \
+./js/libs/howler.min.js \
+./js/libs/joypad.min.js \
 ./js/libs/Tween.js \
 ./js/const.js \
+./js/audio/audioproxy.js \
 ./js/globals.js \
 ./js/core/atlas.js \
 ./js/core/bitmap.js \
@@ -41,12 +40,13 @@ cat ./js/CocoonJSExtensions/cocoon.js \
 ./js/map/tiles/trickycorner.js \
 ./js/map/tiles/points.js \
 ./js/map/tiles/diamond.js \
-./js/map/map.js \
+./js/map/levelmap.js \
 ./js/player/desktop.js \
 ./js/player/mobile.js \
 ./js/game/ui/button.js \
 ./js/game/ui/levelbutton.js \
 ./js/game/ui/buttongroup.js \
+./js/game/ui/diamondcounter.js \
 ./js/game/levels.js \
 ./js/game/themes.js \
 ./js/game/create.js \
@@ -58,9 +58,6 @@ cat ./js/CocoonJSExtensions/cocoon.js \
 ./js/game/create/startscreen.js \
 ./js/game/callbacks.js \
 ./js/game/callbacks/levelfinished.js \
-./js/game/callbacks/onbannerhidden.js \
-./js/game/callbacks/onbannerready.js \
-./js/game/callbacks/onbannershow.js \
 ./js/game/callbacks/restart.js \
 ./js/game/init.js \
 ./js/game/functions.js \
@@ -82,41 +79,34 @@ cat ./js/CocoonJSExtensions/cocoon.js \
 echo "$(timestamp): Files merged"
 
 
-#running yuicompressor
-java -jar ./tools/yuicompressor-2.4.8.jar ./$path/riamond.js -o ./$path/riamond.yui.min.js --charset utf-8
-echo "$(timestamp): Minified standard version (yuicompressor)"
+echo "$(timestamp): executing minifyjs"
+./node_modules/.bin/esbuild ./$path/riamond.js --bundle --minify --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=./$path/riamond.min.js
 
 
-#running closure compiler (ECMASCRIPT5, ECMASCRIPT5_STRICT)
-java -jar ./tools/compiler.jar --js=./$path/riamond.js --js_output_file ./$path/riamond.closure.min.js --language_in ECMASCRIPT5 --source_map_format V3 --create_source_map ./$path/riamond.closure.min.js.map
-echo "$(timestamp): Minified standard version (closure compiler)"
+if command -v TexturePacker &> /dev/null
+then
+    echo "$(timestamp): generating gfx-ui"
+    TexturePacker ./gfx/gfx-ui.tps
 
-echo "$(timestamp): generating gfx-ui"
-TexturePacker ./gfx/gfx-ui.tps
+    echo "$(timestamp): generating theme-0"
+    TexturePacker ./gfx/theme-0/theme.tps
 
-echo "$(timestamp): generating theme-0"
-TexturePacker ./gfx/theme-0/theme.tps
+    echo "$(timestamp): generating theme-0"
+    TexturePacker ./gfx/theme-1/theme.tps
 
-echo "$(timestamp): generating theme-0"
-TexturePacker ./gfx/theme-1/theme.tps
+    echo "$(timestamp): generating theme-0"
+    TexturePacker ./gfx/theme-2/theme.tps
 
-echo "$(timestamp): generating theme-0"
-TexturePacker ./gfx/theme-2/theme.tps
+    echo "$(timestamp): generating theme-0"
+    TexturePacker ./gfx/theme-3/theme.tps
 
-echo "$(timestamp): generating theme-0"
-TexturePacker ./gfx/theme-3/theme.tps
+    echo "$(timestamp): generating theme-0"
+    TexturePacker ./gfx/theme-4/theme.tps
 
-echo "$(timestamp): generating theme-0"
-TexturePacker ./gfx/theme-4/theme.tps
+else
+    echo "$(timestamp): TexturePacker missing! Maybe your are working not on macOS?"
 
-# delete zip archive
-echo "$(timestamp): delete old zip file"
-rm riamond-rush.zip
-
-#zipping needed files for cocoonjs
-zip -rq riamond-rush.zip index.html gfx/ css/ js/ sfx/ font/ effects/
-echo "$(timestamp): zipped file for cocoonjs"
-
+fi
 
 echo "$(timestamp): finished building riamond"
 

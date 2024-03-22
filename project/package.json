@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "esbuild": "0.20.2",
+    "npm-watch": "^0.11.0"
+  },
+  "scripts": {
+    "concat": "cat ./js/**/*.js > ./dist/riamond.all.js",
+    "buildjs": "./node_modules/.bin/esbuild ./dist/riamond.all.js --bundle --minify --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=./dist/riamond.all.min.js"
+  },
+  "watch": {
+    "riamond": "{js}/**/*.js"
+  },
+  "dependencies": {
+  }
+}

@@ -100,7 +100,7 @@ GameTweens.prototype.startScreenOutGame = function () {
 
 
     var tween = new TWEEN.Tween({ x: claim.x, y: claim.y })
-        .to({ x: 1500 }, 1000)
+        .to({ x: 1100 }, 1000)
         .easing(TWEEN.Easing.Elastic.InOut)
         .onUpdate(function () {
             claim.x = this.x
@@ -158,7 +158,7 @@ GameTweens.prototype.startScreenOutAbout = function () {
 
 
     var tween = new TWEEN.Tween({ x: claim.x, y: claim.y })
-        .to({ x: 1500 }, 1000)
+        .to({ x: 1100 }, 1000)
         .easing(TWEEN.Easing.Elastic.InOut)
         .onUpdate(function () {
             claim.x = this.x

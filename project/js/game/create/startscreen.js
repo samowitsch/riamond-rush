@@ -33,7 +33,7 @@ GameCreate.prototype.startscreenObjects = function () {
 
     claim = new Sprite({
         imagename: 'gfx/claim.png',
-        x: 1500,
+        x: 1100,
         y: 280
     })
     Game.entities.push(claim)

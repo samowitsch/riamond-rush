@@ -20,8 +20,9 @@ var PE = {
 
         // click on canvas
         document.querySelector('canvas').addEventListener('mousedown', function (evt) {
+            var rect = can.getBoundingClientRect();
             PE.clicked = true
-            PE.setPosition(evt.layerX, evt.layerY)
+            PE.setPosition(evt.layerX - rect.left, evt.layerY - rect.top)
         })
         document.querySelector('canvas').addEventListener('mouseup', function (evt) {
             PE.clicked = false
@@ -29,7 +30,8 @@ var PE = {
 
         document.querySelector('canvas').addEventListener('mousemove', function (evt) {
             if (PE.clicked) {
-                PE.setPosition(evt.layerX, evt.layerY)
+                var rect = can.getBoundingClientRect();
+                PE.setPosition(evt.layerX - rect.left, evt.layerY - rect.top)
             }
         })
 

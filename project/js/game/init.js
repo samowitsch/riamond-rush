@@ -28,7 +28,7 @@ GameInit.prototype.canvas = function () {
     bctx = bcan.getContext('2d', {antialias: true})
 
 
-    can.addEventListener('click', function (evt) {        
+    can.addEventListener('click', function (evt) {
         var rect = can.getBoundingClientRect();
 
         var scalingRatioX = evt.target.width / evt.target.clientWidth,
@@ -167,13 +167,13 @@ GameInit.prototype.gamescreen = function () {
     Game.entities = []
 
     // url level data from editor
-    //editorLevel = window.location.search.replace('?level=', '');
-    //
-    //if (editorLevel.length > 0) {
-    //    currentlevel = JSON.parse(decodeURI(editorLevel))
-    //} else {
+    editorLevel = window.location.search.replace('?leveleditor=', '');
+
+    if (editorLevel.length > 0) {
+       currentlevel = JSON.parse(decodeURI(editorLevel))
+    } else {
         currentlevel = JSON.parse(JSON.stringify(Levels[levelCounter])) // 'copy' instead of call by reference
-    //}
+    }
 
     counter = currentlevel.timelimit
 

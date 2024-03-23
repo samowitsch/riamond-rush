@@ -56,18 +56,21 @@ var Editor = {
     callbacks: {
         playMap: function () {
             Editor.callbacks.generateMap()
-            var output = document.querySelector('#output'),
-                iframe = document.querySelector('#playit'),
+            var output = document.getElementById('output'),
                 level = output.value,
-                url = 'http://www.motions-media.de/developing/riamond-rush/index.html?level=' + encodeURI(level)
+                url = '/index.html?leveleditor=' + encodeURI(level)
 
-//            window.open(url, '_blank')
+            iframe = document.createElement('iframe')
+            iframe.id = 'playit'
+            iframe.class = 'lightbox'
+            iframe.width = 800
+            iframe.height = 600
+            iframe.src = url
+            document.getElementsByTagName('body')[0].appendChild(iframe)
 
-            iframe.setAttribute('src', url)
             $.featherlight($('#playit'), {type: 'html'})
-            iframe.setAttribute('src', '')
 
-            console.log(level)
+            console.log(iframe, level)
 
         },
         originChanged: function () {

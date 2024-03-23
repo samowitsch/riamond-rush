@@ -21,7 +21,6 @@ GameCreate.prototype.startscreenObjects = function () {
     })
     Game.entities.push(textriamond)
 
-
     textrush = new Sprite({
         atlasimage: atlasUI.image,
         atlasdata: atlasUI.getPicByName('title-text-rush'),
@@ -30,6 +29,15 @@ GameCreate.prototype.startscreenObjects = function () {
         y: 200
     })
     Game.entities.push(textrush)
+
+
+    claim = new Sprite({
+        imagename: 'gfx/claim.png',
+        x: 1500,
+        y: 280
+    })
+    Game.entities.push(claim)
+
 
     btnPlay = new Button({
         atlasimage: atlasUI.image,

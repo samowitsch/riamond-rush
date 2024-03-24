@@ -96,7 +96,8 @@ GameInit.prototype.sound = function () {
     });
 
     lock = new AudioProxy({
-        url: '/sfx/save-lock.ogg'
+        url: '/sfx/save-lock.ogg',
+        volume: 0.4
     });
 
     rotate = new AudioProxy({

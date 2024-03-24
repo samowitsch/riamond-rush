@@ -79,8 +79,10 @@ var Editor = {
                 document.querySelector('#startpointy').value
             )
         },
-        importMap: function () {
-            if (storageTrigger === true) {
+        importMap: function (levelData) {
+            if (typeof levelData !== 'undefined' && typeof levelData !== 'object') {
+                var levelData = JSON.parse(levelData)
+            }else if (storageTrigger === true) {
                 var storage = localStorage.getItem('tempLevel'),
                     levelData = JSON.parse(storage)
                 storageTrigger = false
@@ -125,7 +127,7 @@ var Editor = {
                     gt.setAttribute('style', 'background: url(' + image + '); -webkit-transform: rotate(' + rotation + 'deg); transform: rotate(' + rotation + 'deg); border: none;')
                 }
             }
-            document.querySelector('#output').value = ''
+            Editor.callbacks.generateMap()
         },
         loadFromStorage: function () {
             storageTrigger = true
@@ -179,6 +181,7 @@ var Editor = {
                 this.setAttribute('value', id)
                 this.setAttribute('style', 'background: url(' + image + '); -webkit-transform: rotate(' + rotation + 'deg); transform: rotate(' + rotation + 'deg); border: none;')
             }
+            Editor.callbacks.saveHistory()
         },
         btnTilesMouseOver: function () {
             if (mousedown) {
@@ -193,7 +196,27 @@ var Editor = {
                     this.setAttribute('value', id)
                     this.setAttribute('style', 'background: url(' + image + '); -webkit-transform: rotate(' + rotation + 'deg); transform: rotate(' + rotation + 'deg); border: none;')
                 }
+                Editor.callbacks.saveHistory()
             }
+        },
+        saveHistory: function () {
+            Editor.callbacks.generateMap()
+            let output = document.querySelector('#output').value
+            let itm = document.createElement('li')
+            itm.innerHTML = '<i class="fa-solid fa-rotate-left"></i> ' + Date.now()
+            itm.classList.add('item')
+            itm.dataset.mapdata = output
+            itm.addEventListener('click', Editor.callbacks.restoreFromHistory)
+            document.getElementById('history').prepend(itm)
+
+            if (document.getElementById('history').childElementCount >= 1000) {
+                document.getElementById('history')
+                .removeChild(document.getElementById('history').lastChild);
+            }
+        },
+        restoreFromHistory: function(el){
+            console.log(el.target.dataset.mapdata)
+            Editor.callbacks.importMap(el.target.dataset.mapdata)
         },
         sendMail: function () {
             Editor.callbacks.generateMap()

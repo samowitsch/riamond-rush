@@ -115,6 +115,22 @@ p {
     margin: 10px 0;
 }
 
+#history {
+    list-style-type: none;
+    width: 150px;
+    height: 600px;
+    display: block;
+    overflow: auto;
+}
+
+#history .item {
+    padding: 4px
+}
+
+
+#history .item:hover {
+    background-color: #444;
+}
 
 
 .tilelist {

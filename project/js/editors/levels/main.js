@@ -89,8 +89,8 @@ var Editor = {
                 var levelData = Levels[document.querySelector('#levels').value]
             }
 
-
             document.querySelector('#levelname').value = levelData.name
+            document.querySelector('#author').value = levelData.author || 'unknown'
 
             // set night mode checkbox
             document.querySelector('#nightmode').checked = levelData.nightmode
@@ -151,6 +151,7 @@ var Editor = {
 
             var lvl = {
                 name: document.querySelector('#levelname').value,
+                author: document.querySelector('#author').value,
                 digging: parseInt(document.querySelector('#digging').value),
                 timelimit: 50,
                 startpoint: {

@@ -2,6 +2,7 @@
 GameCallbacks.prototype.levelFinished = function () {
     player.canWalk = false
     success.play()
+    triesCounter = 0
     levelCounter += 1
 
     Game.fn.raiseLevelNumberInLocalStorage()

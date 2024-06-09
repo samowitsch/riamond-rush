@@ -1,4 +1,5 @@
 GameCreate.prototype.gamescreenObjects = function () {
+    triesCounter++; // raise tries counter
     sfxback.pause()
     if (levelCounter % 2) {
         sfxback.src = "sfx/sound-ingame-2.ogg"
@@ -85,7 +86,6 @@ GameCreate.prototype.gamescreenObjects = function () {
     })
     Game.entities.push(btnIngameRestart)
 
-
     new TWEEN.Tween({x: btnIngameRestart.x, y: btnIngameRestart.y})
         .to({x: can.width - 25, y: 25}, 1000)
         .easing(TWEEN.Easing.Elastic.InOut)
@@ -94,6 +94,33 @@ GameCreate.prototype.gamescreenObjects = function () {
             btnIngameRestart.y = this.y
         })
         .start();
+
+    tries = new Bitmap({
+        x: 775 + 50,
+        y: 35 + 50,
+        width: 50,
+        height: 50
+    })
+
+    // draw text to bitmap context
+    Game.font.drawText({
+        text: '' + triesCounter,
+        xpos: 0,
+        ypos: Game.font.getLineHeight(),
+        drawCtx: tries.ctx
+    })
+
+    Game.entities.push(tries);
+
+    new TWEEN.Tween({x: tries.x, y: tries.y})
+    .to({x: 775, y: 35}, 1500)
+    .easing(TWEEN.Easing.Elastic.InOut)
+    .onUpdate(function () {
+        tries.x = this.x
+        tries.y = this.y
+    })
+    .start();
+
 
 
     if (currentlevel.digging > 0) {

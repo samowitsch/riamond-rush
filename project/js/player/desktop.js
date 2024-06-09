@@ -154,6 +154,7 @@ PlayerDesktop.prototype.esc = function () {
     sfxback.pause()
     sfxback.src = 'sfx/sound-title.ogg'
     sfxback.play()
+    triesCounter = 0
     Game.init.startscreen()
 }
 PlayerDesktop.prototype.digg = function () {

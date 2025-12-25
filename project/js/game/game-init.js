@@ -127,6 +127,16 @@ GameInit.prototype.sound = function () {
         volume: 0.7
     });
 
+    sfxBtnBack = new AudioProxy({
+        url: '/sfx/crowd-aww.ogg',
+        volume: 0.7
+    });
+
+    sfxBtnRestart = new AudioProxy({
+        url: '/sfx/oh-shit-not-good.ogg',
+        volume: 0.7
+    });
+
 }
 
 GameInit.prototype.startscreen = function () {

@@ -63,7 +63,7 @@ GameCreate.prototype.gamescreenObjects = function () {
         atlasdata: atlasUI.getPicByName('btn-ingame-menu'),
         x: -25,
         y: -25,
-        audio: btnSound
+        audio: sfxBtnBack
     })
 
     Game.entities.push(btnIngameMenu)
@@ -82,7 +82,7 @@ GameCreate.prototype.gamescreenObjects = function () {
         atlasdata: atlasUI.getPicByName('btn-ingame-restart'),
         x: can.width + 25,
         y: -25,
-        audio: btnSound
+        audio: sfxBtnRestart
     })
     Game.entities.push(btnIngameRestart)
 

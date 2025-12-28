@@ -45,7 +45,7 @@ GameInit.prototype.canvas = function () {
 GameInit.prototype.resources = function () {
 
     emitterScreen = new ParticleEmitter({
-        jsonFile: 'js/editors/particle/effects/riamond-rush-intro.json'
+        jsonFile: 'js/editors/particle/effects/diamond-sparkling.json'
     })
 
     emitterPlayer = new ParticleEmitter({

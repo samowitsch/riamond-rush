@@ -19,7 +19,7 @@ body {
     /*background: -ms-linear-gradient(top, #222222 0%, #333333 42%, #0a0105 100%); *//* IE10+ */
     /*background: linear-gradient(to bottom, #222222 0%, #333333 42%, #0a0105 100%); *//* W3C */
     /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222222', endColorstr='#0a0105', GradientType=0); *//* IE6-9 */
-    cursor:url(http://www.motions-media.de/developing/riamond-rush/gfx/my-cursor.png), auto !important;
+    cursor:url(/gfx/my-cursor.png), auto !important;
 }
 
 h2 a {
@@ -39,7 +39,7 @@ h2 a {
     height: 25px;
     top: 0;
     left: 0;
-    cursor:url(http://www.motions-media.de/developing/riamond-rush/gfx/my-cursor.png), auto !important;
+    cursor:url(/gfx/my-cursor.png), auto !important;
 }
 .origin:hover {
     opacity: 0.9;
@@ -55,7 +55,7 @@ button {
     margin: 0;
     padding: 0;
     float: left;
-    cursor:url(http://www.motions-media.de/developing/riamond-rush/gfx/my-cursor.png), auto;
+    cursor:url(/gfx/my-cursor.png), auto;
 }
 
 button:hover {
@@ -103,7 +103,7 @@ textarea {
 img.thumb {
     width: 30px;
     height: 30px;
-    cursor:url(http://www.motions-media.de/developing/riamond-rush/gfx/my-cursor.png), auto !important;
+    cursor:url(/gfx/my-cursor.png), auto !important;
     opacity: 0.7;
 }
 

@@ -15,7 +15,7 @@ body {
     background: -ms-linear-gradient(top, #222222 0%, #333333 42%, #0a0105 100%); /* IE10+ */
     background: linear-gradient(to bottom, #222222 0%, #333333 42%, #0a0105 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222222', endColorstr='#0a0105', GradientType=0); /* IE6-9 */
-    /*cursor:url(http://www.motions-media.de/developing/riamond-rush/gfx/my-cursor.png), auto !important;*/
+    /*cursor:url(/gfx/my-cursor.png), auto !important;*/
 }
 canvas {
     background: #000;

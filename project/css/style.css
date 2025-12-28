@@ -26,7 +26,7 @@ canvas {
     display: block;
     margin: 0 auto;
     height: 100%;
-    cursor:url(http://www.motions-media.de/developing/riamond-rush/gfx/my-cursor.png), auto;
+    cursor:url(/gfx/my-cursor.png), auto;
     width: 100%;
     max-width: 800px;
     height: auto;
